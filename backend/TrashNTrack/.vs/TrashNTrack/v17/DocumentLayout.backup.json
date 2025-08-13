@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\",
+  "WorkspaceRootPath": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\xampp\\htdocs\\trashandtrack\\backend\\trashntrack\\trashntrack\\config\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\users\\gameros\\desktop\\trashandtrack\\backend\\trashntrack\\trashntrack\\config\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|solutionrelative:trashntrack\\config\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\xampp\\htdocs\\trashandtrack\\backend\\trashntrack\\trashntrack\\controllers\\containerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\users\\gameros\\desktop\\trashandtrack\\backend\\trashntrack\\trashntrack\\controllers\\containerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|solutionrelative:trashntrack\\controllers\\containerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\xampp\\htdocs\\trashandtrack\\backend\\trashntrack\\trashntrack\\dataaccess\\mongodbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\users\\gameros\\desktop\\trashandtrack\\backend\\trashntrack\\trashntrack\\dataaccess\\mongodbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|solutionrelative:trashntrack\\dataaccess\\mongodbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\xampp\\htdocs\\trashandtrack\\backend\\trashntrack\\trashntrack\\models\\containers\\containerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|c:\\users\\gameros\\desktop\\trashandtrack\\backend\\trashntrack\\trashntrack\\models\\containers\\containerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44425B0A-5681-4738-B699-8C11AAB06E00}|TrashNTrack\\TrashNTrack.csproj|solutionrelative:trashntrack\\models\\containers\\containerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -56,11 +56,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Config.json",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Config\\Config.json",
+              "DocumentMoniker": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Config\\Config.json",
               "RelativeDocumentMoniker": "TrashNTrack\\Config\\Config.json",
-              "ToolTip": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Config\\Config.json",
+              "ToolTip": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Config\\Config.json",
               "RelativeToolTip": "TrashNTrack\\Config\\Config.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-08-05T07:10:33.68Z",
               "EditorCaption": ""
@@ -69,9 +69,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MongoDbConnection.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\DataAccess\\MongoDbConnection.cs",
+              "DocumentMoniker": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\DataAccess\\MongoDbConnection.cs",
               "RelativeDocumentMoniker": "TrashNTrack\\DataAccess\\MongoDbConnection.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\DataAccess\\MongoDbConnection.cs",
+              "ToolTip": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\DataAccess\\MongoDbConnection.cs",
               "RelativeToolTip": "TrashNTrack\\DataAccess\\MongoDbConnection.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAA2wDYAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -81,9 +81,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "ContainersController.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Controllers\\ContainersController.cs",
+              "DocumentMoniker": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Controllers\\ContainersController.cs",
               "RelativeDocumentMoniker": "TrashNTrack\\Controllers\\ContainersController.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Controllers\\ContainersController.cs",
+              "ToolTip": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Controllers\\ContainersController.cs",
               "RelativeToolTip": "TrashNTrack\\Controllers\\ContainersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -93,9 +93,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ContainerInfo.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
               "RelativeDocumentMoniker": "TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
+              "ToolTip": "C:\\Users\\Gameros\\Desktop\\TrashAndTrack\\backend\\TrashNTrack\\TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
               "RelativeToolTip": "TrashNTrack\\Models\\Containers\\ContainerInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

@@ -1,10 +1,10 @@
 ﻿{
-    "sqlServer": {
-        "Server": "LAPTOP-HVT2AIEI\\SQLEXPRESS",
-        "Database": "tnt_2",
-        "Trusted_Connection": "True",
-        "TrustServer_Certificate": "True"
-    },
+  "sqlServer": {
+    "Server": "DESKTOP-4MFB8DG\\SQLEXPRESS",
+    "Database": "tnt_2",
+    "Trusted_Connection": "True",
+    "TrustServer_Certificate": "True"
+  },
     "Paths": {
         "Domain": "http://localhost/callcenter/",
         "Photos": {
