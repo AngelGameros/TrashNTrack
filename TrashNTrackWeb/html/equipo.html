@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Dashboard de Residuos Tóxicos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/sidebar.css" rel="stylesheet">
+    <link href="../css/equipo.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/themes.css">
+
+
+</head>
+
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+
+
+    <body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+    
+    <div class="dashboard-container">
+        <div id="sidebar-placeholder"></div>
+        <main class="main-content">
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-users" style="color: #22d3ee;"></i>
+                    <h1>Gestión de Equipo</h1>
+              
+            </header>
+
+            <div class="top-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar empleado..." onkeyup="handleUserSearch()">
+                </div>
+            
+            </div>
+            <div id="messageContainer" class="message" style="display: none;"></div>
+
+            <section class="user-grid-section">
+                <div class="user-grid" id="userGrid">
+                    </div>
+            </section>
+
+            
+        </main>
+    </div>
+
+    <div id="editUserModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('editUserModal')">&times;</span>
+            <h2><span id="editUserNameFull"></span></h2>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <div class="modal-form-group">
+                    <label for="editNombre">Nombre:</label>
+                    <input type="text" id="editNombre" required>
+                    <div id="editNombreError" class="error-message"></div>
+                </div>
+                <div class="modal-form-group">
+                    <label for="editPrimerApell">Primer Apellido:</label>
+                    <input type="text" id="editPrimerApell" required>
+                    <div id="editPrimerApellError" class="error-message"></div>
+                </div>
+                <div class="modal-form-group">
+                    <label for="editsegundoApellido">Segundo Apellido:</label>
+                    <input type="text" id="editsegundoApellido">
+                    <div id="editsegundoApellidoError" class="error-message"></div>
+                </div>
+                <div class="modal-form-group">
+                    <label for="editNumeroTelefono">Número de Teléfono:</label>
+                    <input type="tel" id="editNumeroTelefono" required pattern="[0-9]{10}">
+                    <div id="editNumeroTelefonoError" class="error-message"></div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-small btn-secondary" onclick="closeModal('editUserModal')">Cancelar</button>
+                    <button type="submit" class="btn-small btn-edit">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <script type="module" src="../js/equipo.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script src="../js/authGuard.js"></script>
+</body>
+</html>

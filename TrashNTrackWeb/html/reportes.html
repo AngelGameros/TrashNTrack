@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reportes - Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="../css/dashboard.css" rel="stylesheet" />
+  <link href="../css/reportes.css" rel="stylesheet" />
+  <link href="../css/sidebar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/themes.css">
+
+  
+    <script type="module" src="../js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+  <div class="dashboard-container">
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+      <header class="admin-header">
+        <h1 class="admin-title">
+          <i class="fas fa-shield-alt"></i> Reportes del Sistema
+        </h1>
+      </header>
+
+      <section class="reports-section">
+        <div class="table-container">
+          <!-- Estado de carga -->
+          <div class="loading-state" id="loadingState" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Cargando reportes...</p>
+          </div>
+
+          <!-- Estado vacío -->
+          <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-inbox"></i>
+            <h3>No se encontraron reportes</h3>
+            <p>No hay reportes disponibles.</p>
+          </div>
+
+          <!-- Tabla de reportes -->
+<table class="reports-table" id="reportsTable">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Descripción</th>
+      <th>Usuario</th>
+      <th>Estado</th>
+      <th>ID Contenedor</th>
+      <th>Cantidad</th>
+      <th>Estado Contenedor</th>
+      <th></th> <!-- Columna para el ícono de expansión -->
+    </tr>
+  </thead>
+  <tbody id="reportsTableBody">
+    <!-- Filas se insertan vía JS -->
+  </tbody>
+</table>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/sidebar.js"></script>
+  <script src="../js/authGuard.js"></script>
+  <script type="module" src="../js/reportes.js"></script>
+</body>
+</html>

@@ -1,0 +1,1093 @@
+/* ========================================
+   🎨 DISEÑO PROFESIONAL CON PALETA CORPORATIVA
+   ======================================== */
+
+/* Variables de la paleta profesional */
+:root {
+  /* Colores principales de la paleta */
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #dbeafe;
+  --primary-dark: #1e40af;
+  --primary-darker: #1e3a8a;
+
+  --secondary-color: #64748b;
+  --secondary-hover: #475569;
+  --secondary-light: #f1f5f9;
+  --secondary-dark: #334155;
+
+  --success-color: #10b981;
+  --success-hover: #059669;
+  --success-light: #d1fae5;
+  --success-dark: #047857;
+
+  --warning-color: #f59e0b;
+  --warning-hover: #d97706;
+  --warning-light: #fef3c7;
+  --warning-dark: #b45309;
+
+  --danger-color: #ef4444;
+  --danger-hover: #dc2626;
+  --danger-light: #fee2e2;
+  --danger-dark: #b91c1c;
+
+  --info-color: #06b6d4;
+  --info-hover: #0891b2;
+  --info-light: #cffafe;
+  --info-dark: #0e7490;
+
+  /* Superficies y fondos */
+  --background-color: #f8fafc;
+  --background-secondary: #f1f5f9;
+  --surface-color: #ffffff;
+  --surface-hover: #f8fafc;
+  --surface-elevated: #ffffff;
+
+  /* Bordes y divisores */
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --border-focus: var(--primary-color);
+
+  /* Textos */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Sombras profesionales */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+  --shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+
+  /* Gradientes corporativos */
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-hover) 100%);
+  --gradient-success: linear-gradient(135deg, var(--success-color) 0%, var(--success-hover) 100%);
+  --gradient-info: linear-gradient(135deg, var(--info-color) 0%, var(--info-hover) 100%);
+  --gradient-warning: linear-gradient(135deg, var(--warning-color) 0%, var(--warning-hover) 100%);
+  --gradient-danger: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-hover) 100%);
+  --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+
+  /* Transiciones */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Radios */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal: 1050;
+  --z-tooltip: 1070;
+}
+
+/* Fondo profesional con gradiente sutil */
+body {
+  background: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   🎛️ SECCIÓN DE CONTROLES PROFESIONAL
+   ======================================== */
+
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  background: var(--gradient-surface);
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.controls-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 14px 14px 0 0;
+}
+
+.controls-section:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.filtros {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.filtros input,
+.filtros select {
+  padding: 10px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 140px;
+  background: var(--surface-color);
+  color: var(--text-primary);
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.filtros input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), var(--shadow-md);
+  transform: translateY(-1px);
+  background: var(--surface-elevated);
+}
+
+.filtros input:hover,
+.filtros select:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ========================================
+   🚀 BOTÓN DE CREAR PROFESIONAL
+   ======================================== */
+
+.create-empresa-btn {
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-bounce);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.create-empresa-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.create-empresa-btn:hover::before {
+  left: 100%;
+}
+
+.create-empresa-btn:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-darker));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.create-empresa-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.create-empresa-btn i {
+  font-size: 14px;
+}
+
+/* ========================================
+   ✨ MODALES PROFESIONALES
+   ======================================== */
+
+.empresa-modal {
+  display: none;
+  position: fixed;
+  z-index: var(--z-modal);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  margin: 3% auto;
+  padding: 0;
+  border: none;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 580px;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+  padding: 20px 28px;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.modal-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  position: relative;
+  z-index: 2;
+}
+
+.close-button,
+.close-button-create {
+  color: var(--text-inverse);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 3;
+}
+
+.close-button:hover,
+.close-button-create:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modal-body {
+  padding: 28px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--surface-color);
+}
+
+/* Scrollbar personalizada para modal */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ========================================
+   🏷️ PESTAÑAS PROFESIONALES
+   ======================================== */
+
+.tabs {
+  display: flex;
+  margin-bottom: 28px;
+  background: var(--background-secondary);
+  border-radius: var(--radius-md);
+  padding: 3px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: 7px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: var(--text-primary);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-xs);
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-button i {
+  font-size: 14px;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeInUp 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   📝 FORMULARIOS PROFESIONALES
+   ======================================== */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  box-sizing: border-box;
+  transition: var(--transition);
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  transform: translateY(-1px);
+  background: var(--surface-elevated);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  border-color: var(--border-hover);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-help {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.form-help a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.form-help a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.error-message {
+  color: var(--danger-color);
+  font-size: 11px;
+  margin-top: 4px;
+  display: block;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========================================
+   🎯 BOTONES DE ACCIÓN PROFESIONALES
+   ======================================== */
+
+.form-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.form-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition-bounce);
+  min-width: 100px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.form-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.form-buttons button:hover::before {
+  left: 100%;
+}
+
+#cancelarEmpresaBtn,
+#cancelarUbicacionBtn {
+  background: var(--gradient-secondary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.2);
+}
+
+#cancelarEmpresaBtn:hover,
+#cancelarUbicacionBtn:hover {
+  background: linear-gradient(135deg, var(--secondary-hover), var(--secondary-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+}
+
+#crearEmpresaBtn {
+  background: var(--gradient-success);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+#crearEmpresaBtn:hover {
+  background: linear-gradient(135deg, var(--success-hover), var(--success-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+#crearUbicacionBtn {
+  background: var(--gradient-warning);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+#crearUbicacionBtn:hover {
+  background: linear-gradient(135deg, var(--warning-hover), var(--warning-dark));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+/* ========================================
+   💬 MENSAJES PROFESIONALES
+   ======================================== */
+
+.message-container {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  animation: messageSlide 0.4s ease;
+  border: 1px solid;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#loadingMessage {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-color: var(--primary-color);
+}
+
+#successMessage {
+  background: var(--success-light);
+  color: var(--success-dark);
+  border-color: var(--success-color);
+}
+
+#errorMessage {
+  background: var(--danger-light);
+  color: var(--danger-dark);
+  border-color: var(--danger-color);
+}
+
+/* ========================================
+   🏢 TARJETAS DE EMPRESA PROFESIONALES
+   ======================================== */
+
+.empresas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.empresa-card {
+  background: var(--gradient-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 180px;
+  max-height: 200px;
+}
+
+.empresa-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.empresa-card:hover::before {
+  transform: scaleX(1);
+}
+
+.empresa-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-color);
+  background: var(--surface-elevated);
+}
+
+.empresa-card h3 {
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.empresa-card p {
+  margin: 8px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empresa-card p strong {
+  color: var(--text-primary);
+  min-width: 90px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  flex-shrink: 0;
+}
+
+.empresa-card p i {
+  color: var(--primary-color);
+  font-size: 12px;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Contenedor de información más compacto */
+.empresa-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* ========================================
+   📱 RESPONSIVE PROFESIONAL
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .empresas-container {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+  
+  .filtros {
+    flex-direction: column;
+    min-width: auto;
+    gap: 10px;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+    border-radius: 14px;
+  }
+  
+  .modal-header {
+    padding: 16px 20px;
+    border-radius: 14px 14px 0 0;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-buttons button {
+    width: 100%;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .empresas-container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  
+  .empresa-card {
+    padding: 14px;
+    min-height: 160px;
+    max-height: 180px;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    padding: 0;
+    background: transparent;
+    gap: 6px;
+  }
+  
+  .tab-button {
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    justify-content: flex-start;
+    padding: 8px 12px;
+  }
+  
+  .tab-button.active {
+    background: var(--primary-color);
+    color: var(--text-inverse);
+    border-color: var(--primary-color);
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros input,
+  .filtros select {
+    min-width: auto;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  .create-empresa-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+  
+  .modal-header h2 {
+    font-size: 16px;
+  }
+  
+  .empresa-card {
+    padding: 12px;
+    min-height: 140px;
+    max-height: 160px;
+  }
+  
+  .empresa-card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .empresa-card p {
+    font-size: 11px;
+    gap: 6px;
+  }
+  
+  .empresa-card p strong {
+    min-width: 70px;
+    font-size: 10px;
+  }
+  
+  .empresas-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+}
+
+/* ========================================
+   📊 OPTIMIZACIÓN PARA MÁS DENSIDAD
+   ======================================== */
+
+@media (min-width: 1400px) {
+  .empresas-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .empresas-container {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 12px;
+  }
+}
+
+/* ========================================
+   ✨ EFECTOS PROFESIONALES
+   ======================================== */
+
+/* Estados de focus mejorados */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Animación sutil para elementos que aparecen */
+.fade-in {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Efecto de loading profesional */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Selección de texto profesional */
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--text-primary);
+}
+
+/* Estados de disabled profesionales */
+button:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  background: var(--background-secondary) !important;
+  color: var(--text-muted) !important;
+}
+
+button:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ========================================
+   🎯 UTILIDADES PROFESIONALES
+   ======================================== */
+
+/* Texto más compacto */
+.text-compact {
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Espaciado reducido */
+.spacing-tight {
+  gap: 8px;
+  margin: 8px 0;
+}
+
+/* Contenido truncado */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Altura fija para consistencia */
+.fixed-height {
+  height: 180px;
+  overflow: hidden;
+}
+
+/* Scrollbar personalizado global */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Clases de utilidad para colores */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-success { color: var(--success-color); }
+.text-warning { color: var(--warning-color); }
+.text-danger { color: var(--danger-color); }
+.text-info { color: var(--info-color); }
+
+.bg-primary { background: var(--primary-color); }
+.bg-success { background: var(--success-color); }
+.bg-warning { background: var(--warning-color); }
+.bg-danger { background: var(--danger-color); }
+.bg-info { background: var(--info-color); }
+
+/* Clases de utilidad para sombras */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Clases de utilidad para bordes */
+.border { border: 1px solid var(--border-color); }
+.border-primary { border-color: var(--primary-color); }
+.border-success { border-color: var(--success-color); }
+.border-warning { border-color: var(--warning-color); }
+.border-danger { border-color: var(--danger-color); }
+
+/* Clases de utilidad para espaciado */
+.p-2 { padding: 8px; }
+.p-3 { padding: 12px; }
+.p-4 { padding: 16px; }
+.p-5 { padding: 20px; }
+.p-6 { padding: 24px; }
+
+.m-2 { margin: 8px; }
+.m-3 { margin: 12px; }
+.m-4 { margin: 16px; }
+.m-5 { margin: 20px; }
+.m-6 { margin: 24px; }
+
+/* Clases de utilidad para display */
+.hidden { display: none !important; }
+.visible { display: block !important; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Clases de utilidad para texto */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }

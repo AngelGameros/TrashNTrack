@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simulador de Contenedores</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <style>
+    #charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .chart-box {
+      width: 300px;
+      height: 200px;
+    }
+    #log {
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: .5rem;
+    }
+  </style>
+</head>
+<body>
+  <select id="containerSelector"></select>
+  <button id="startButton">Iniciar</button>
+  <button id="stopButton">Detener</button>
+  <button id="refreshButton">Refrescar gráficas</button>
+
+  <div id="charts-container">
+    <div id="chart-Temperature_C" class="chart-box"></div>
+    <div id="chart-Humidity_RH" class="chart-box"></div>
+    <div id="chart-Air_Quality_Ppm" class="chart-box"></div>
+    <div id="chart-Gas_Ppm" class="chart-box"></div>
+    <div id="chart-Distance_Cm" class="chart-box"></div>
+    <div id="chart-Weight_Kg" class="chart-box"></div>
+  </div>
+
+  <div id="log"></div>
+  
+
+  <script type="module" src="./simulator.js"></script>
+</body>
+</html>

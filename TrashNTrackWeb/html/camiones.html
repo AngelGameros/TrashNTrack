@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camiones - Dashboard Logístico</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/themes.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script type="module" src="../js/camiones.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script src="../js/authGuard.js"></script>
+    <script type="module" src="../js/main.js"></script>
+
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/sidebar.css" rel="stylesheet">
+    <link href="../css/camiones.css" rel="stylesheet">    
+</head>
+
+<body id="body"> 
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+    <div class="dashboard-container">
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Encabezado -->
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-truck" style="color: #22d3ee;"></i>
+                    <h1>Gestión de Camiones</h1>
+                </div>
+            </header>
+            
+            <div class="controls-section">
+                <div class="filtros">
+                    <input type="text" class="filter-input" id="searchInput" placeholder="Buscar por nombre, marca, placa..." oninput="handleSearch()">
+                </div>
+                
+                <!-- Contenedor específico para el botón de crear -->
+                <div class="action-buttons">
+                    <button id="newTruckBtn" class="create-truck-btn">
+                        <i class="fas fa-plus"></i>
+                        Crear Nuevo Camión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cuadrícula de Camiones -->
+            <section class="trucks-grid" id="trucksGrid">
+                <!-- Las tarjetas de camiones se cargarán dinámicamente aquí -->
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Ver Detalles del Camión -->
+    <div id="viewTruckModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles del Camión</h2>
+                <span id="closeViewModal" onclick="closeModal('viewTruckModal')" class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="viewTruckDetails">
+                    <!-- Los detalles se poblarán aquí -->
+                </div>
+                <div class="modal-actions">
+                    <div class="form-buttons">
+                        <button type="button" class="btn-cancel" onclick="closeModal('viewTruckModal')">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear nuevo camión (hidden por defecto) -->
+    <div id="createTruckModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Crear Nuevo Camión</h2>
+                <span id="closeCreateModal" onclick="closeModal('createTruckModal')" class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="createTruckForm">
+                    <div class="form-group">
+                        <label for="placaTruck">Placa:</label>
+                        <input type="text" id="placaTruck" name="placa" required placeholder="Ej: XYZ789">
+                        <span class="error-message" id="placaTruckError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marcaTruck">Marca:</label>
+                        <input type="text" id="marcaTruck" name="marca" required placeholder="Ej: Freightliner">
+                        <span class="error-message" id="marcaTruckError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modeloTruck">Modelo:</label>
+                        <input type="text" id="modeloTruck" name="modelo" required placeholder="Ej: FL90">
+                        <span class="error-message" id="modeloTruckError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="anioTruck">Año:</label>
+                        <input type="number" id="anioTruck" name="anio" required placeholder="Ej: 2020">
+                        <span class="error-message" id="anioTruckError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capacidadCargaTruck">Capacidad de Carga (kg):</label>
+                        <input type="number" id="capacidadCargaTruck" name="capacidadCarga" step="any" required placeholder="Ej: 6500">
+                        <span class="error-message" id="capacidadCargaTruckError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="usuarioTruck">Usuario:</label>
+                        <select id="usuarioTruck" name="usuario" required>
+                            <option value="">Selecione un usuario...</option>
+                        </select>
+                        <span class="error-message" id="usuarioTruckError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estadoTruck">Estado:</label>
+                        <select id="estadoTruck" name="estado" required>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                        <span class="error-message" id="estadoTruckError"></span>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="cancelCreateBtn" class="btn-cancel">Cancelar</button>
+                        <button type="submit" id="submitCreateBtn" class="btn-submit">Crear Camión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para Editar Camión -->
+    <div id="editTruckModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Camión</h2>
+                <span id="closeEditModal" onclick="closeModal('editTruckModal')" class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editTruckForm">
+                    <input type="hidden" id="editTruckId">
+                    <div class="form-group">
+                        <label for="editPlaca">Placa:</label>
+                        <input type="text" id="editPlaca" required>
+                        <div id="editPlacaError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editMarca">Marca:</label>
+                        <input type="text" id="editMarca">
+                        <div id="editMarcaError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editModelo">Modelo:</label>
+                        <input type="text" id="editModelo">
+                        <div id="editModeloError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAnio">Año:</label>
+                        <input type="number" id="editAnio">
+                        <div id="editAnioError" class="error-message"></div>
+                    </div>
+
+                    <!-- CAMPO DE USUARIO CORREGIDO: ID y for actualizados -->
+                    <div class="form-group">
+                        <label for="editUsuario">Usuario:</label>
+                        <select id="editUsuario" name="usuario" required>
+                            <option value="">Selecione un usuario...</option>
+                        </select>
+                        <span class="error-message" id="editUsuarioError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editEstado">Estado:</label>
+                        <select id="editEstado" name="estado" required>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                        <div id="editEstadoError" class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCapacidadCarga">Capacidad de Carga:</label>
+                        <input type="number" step="0.01" id="editCapacidadCarga">
+                        <div id="editCapacidadCargaError" class="error-message"></div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn-cancel" onclick="closeModal('editTruckModal')">Cancelar</button>
+                        <button type="submit" class="btn-submit">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

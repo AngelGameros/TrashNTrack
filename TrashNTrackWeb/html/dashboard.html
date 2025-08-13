@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Residuos Tóxicos - Trash & Track</title>
+
+  <!-- Estilos -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="../css/dashboard.css" rel="stylesheet">
+  <link href="../css/sidebar.css" rel="stylesheet">
+  <link href="../css/themes.css" rel="stylesheet">
+
+  <!-- Librerías JS -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>  
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+  <script type="module" src="../js/sidebar.js"></script>
+  <script src="../js/authGuard.js"></script>
+
+
+  <!-- Estilos gráficos -->
+  <style>
+    #charts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .chart-box {
+      width: 350px;
+      height: 250px;
+    }
+    #log {
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: .5rem;
+    }
+  </style>
+</head>
+<div>
+  <div id="side-menu"></div>
+  <div id="content"></div>
+
+  <div class="dashboard-container">
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+      <header class="header">
+        <div class="page-title">
+          <i class="fas fa-tachometer-alt" style="color: #22d3ee;"></i>
+          <h1>Dashboard</h1>
+        </div>
+      </header>
+
+      <!-- Tarjetas de estadística -->
+      <section class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-icon trucks"><i class="fas fa-truck"></i></div>
+          <div class="stat-info">
+            <span id="ContadorCamiones"></span>
+            <p>Camiones recolectores activos</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon containers"><i class="fas fa-box"></i></div>
+          <div class="stat-info">
+            <span id="contadorContenedores"></span>
+            <p>Contenedores monitoreados</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon routes"><i class="fas fa-route"></i></div>
+          <div class="stat-info">
+            <span id="contadorRutas"></span>
+            <p>Rutas de recolección activas</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon routes"><i class="fas fa-user"></i></div>
+          <div class="stat-info">
+            <span id="contadorUsuarios"></span>
+            <p>Total de usuarios aprobados</p>
+        </div>
+        </div>
+
+      </section>
+
+
+        </div>
+  <div class="chart-section">
+    <div id="chartTemperaturaPorEmpresa" style="height: 400px;"></div>
+    <div id="chartGasPorEmpresa" style="height: 400px;"></div>
+    <div id="chartHumedadPorEmpresa" style="height: 400px;"></div>
+  </div>
+
+  <div id="velocimetros">
+    <div id="gaugeContainer"></div>
+  </div>
+    </main>
+
+    
+
+
+</body>
+</html>

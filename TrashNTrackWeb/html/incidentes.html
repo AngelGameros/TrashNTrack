@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión de Incidentes - Lista</title>
+  <link rel="stylesheet" href="../css/incidentes.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/themes.css">
+
+  
+  <script type="module" src="../js/main.js"></script>
+
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+    
+  <div class="dashboard-container">
+    <div id="sidebar-placeholder"></div>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header">
+          <div class="page-title">
+            <i class="fas fa-exclamation-triangle" style="color: #22d3ee;"></i>
+            <h1>Gestión de Incidentes</h1>
+          </div>
+        </div>
+      </header>
+      <div class="content-area">
+        <!-- ÚNICA SECCIÓN: Lista de Incidentes -->
+        <section id="incidentes-lista" class="content-section active">
+          <div class="section-header">
+            <div>
+              <h1>Lista de Incidentes</h1>
+              <p>Gestiona todos los incidentes registrados en el sistema</p>
+            </div>
+          </div>
+
+          <!-- Filtros -->
+          <div class="filters-section">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                id="searchIncidentesInput"
+                placeholder="Buscar por nombre o descripción..."
+              />
+            </div>
+            <select id="usuarioIncidentesFilter">
+              <option value="">Todos los usuarios</option>
+              <!-- Cargado con JS -->
+            </select>
+            <select id="fechaIncidentesFilter">
+              <option value="">Todas las fechas</option>
+              <option value="hoy">Hoy</option>
+              <option value="semana">Esta semana</option>
+              <option value="mes">Este mes</option>
+            </select>
+          </div>
+
+          <!-- Lista de incidentes -->
+          <ul id="lista-incidentes"></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Spinner -->
+  <div id="loadingSpinner" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+
+  <!-- Toasts -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Modal para ver detalles del incidente -->
+  <div id="modalIncidente" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDescripcion"></p>
+      <p><strong>Fecha:</strong> <span id="modalFecha"></span></p>
+      <p><strong>Estado:</strong> <span id="modalEstado">Pendiente</span></p>
+      <p><strong>Usuario:</strong> <span id="modalUsuario"></span></p>
+      <img id="modalImagen" src="" alt="Imagen del incidente" />
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/incidentes.js"></script>
+  <script type="module" src="../js/sidebar.js"></script>
+  <script src="../js/authGuard.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura - Dashboard Logístico</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/temperatura.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar-placeholder"></div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-thermometer-half" style="color: #22d3ee;"></i>
+                    <h1>Monitor de Temperatura</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Exportar Datos
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-cog"></i>
+                        Configurar Alertas
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number normal">142</div>
+                    <div class="stat-label">Sensores Normales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number warning">8</div>
+                    <div class="stat-label">En Advertencia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number critical">3</div>
+                    <div class="stat-label">Críticos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number average">4.2°C</div>
+                    <div class="stat-label">Temperatura Promedio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #6b7280;">98%</div>
+                    <div class="stat-label">Sensores Activos</div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Tendencia de Temperatura (24h)</h3>
+                        <span class="chart-period">Tiempo Real</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="temperatureChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Distribución por Rango</h3>
+                        <span class="chart-period">Actual</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Temperature Monitor -->
+            <section class="temp-monitor">
+                <div class="monitor-header">
+                    <h3 class="monitor-title">Monitoreo en Tiempo Real</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                            <i class="fas fa-filter"></i>
+                            Filtrar
+                        </button>
+                        <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">
+                            <i class="fas fa-sync"></i>
+                            Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="temp-grid">
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-001</span>
+                            <span class="temp-status normal">Normal</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current normal">2.1°C</div>
+                            <div class="temp-range">Rango: 0°C - 4°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Productos lácteos<br>
+                            <strong>Ubicación:</strong> En tránsito a Guadalajara
+                        </div>
+                        <div class="temp-trend trend-stable">
+                            <i class="fas fa-minus"></i>
+                            <span>Estable (últimas 2h)</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-006</span>
+                            <span class="temp-status normal">Normal</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current normal">5.3°C</div>
+                            <div class="temp-range">Rango: 2°C - 8°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Medicamentos<br>
+                            <strong>Ubicación:</strong> Cargando en Puebla
+                        </div>
+                        <div class="temp-trend trend-down">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>Bajando (-0.5°C/h)</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-007</span>
+                            <span class="temp-status warning">Advertencia</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current warning">8.2°C</div>
+                            <div class="temp-range">Rango: 0°C - 4°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Vacunas<br>
+                            <strong>Ubicación:</strong> En tránsito a Monterrey
+                        </div>
+                        <div class="temp-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Subiendo (+1.2°C/h)</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-008</span>
+                            <span class="temp-status critical">Crítico</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current critical">15.1°C</div>
+                            <div class="temp-range">Rango: 0°C - 4°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Productos congelados<br>
+                            <strong>Ubicación:</strong> Descargando en Tijuana
+                        </div>
+                        <div class="temp-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Subiendo (+2.8°C/h)</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-009</span>
+                            <span class="temp-status normal">Normal</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current normal">-18.5°C</div>
+                            <div class="temp-range">Rango: -20°C - -15°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Helados<br>
+                            <strong>Ubicación:</strong> En tránsito a León
+                        </div>
+                        <div class="temp-trend trend-stable">
+                            <i class="fas fa-minus"></i>
+                            <span>Estable (últimas 4h)</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-item">
+                        <div class="temp-item-header">
+                            <span class="temp-container-id">CONT-010</span>
+                            <span class="temp-status warning">Advertencia</span>
+                        </div>
+                        <div class="temp-display">
+                            <div class="temp-current warning">12.8°C</div>
+                            <div class="temp-range">Rango: 8°C - 12°C</div>
+                        </div>
+                        <div class="temp-info">
+                            <strong>Carga:</strong> Frutas y verduras<br>
+                            <strong>Ubicación:</strong> Base Central
+                        </div>
+                        <div class="temp-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Subiendo (+0.8°C/h)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+<script src="../js/temp.js"></script>
+<script type="module" src="../js/sidebar.js"></script>
+<script src="../js/authGuard.js"></script>
+</body>
+</html>

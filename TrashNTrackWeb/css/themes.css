@@ -1,0 +1,12 @@
+/*Configuraciones de color para el sidemenu*/
+:root{
+    --sideMenuBackground: linear-gradient(180deg, #031c44 0%, #052e70 100%);
+    --sideMenuHover: #052e70;
+    --sideMenuSelectedText:#639CF8;
+    --sideMenuNormalText:#cbd5e1;
+    --sideMenuLogo: #3B82F6;
+
+/*Botones*/
+    --update-button:#DDD;
+    --upload-button:#DDD;
+}

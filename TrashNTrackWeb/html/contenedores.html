@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenedores - Dashboard de Residuos Tóxicos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link href="../css/contenedores.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/themes.css" rel="stylesheet">
+
+    <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+    <div class="dashboard-container">
+        <div id="sidebar-placeholder"></div>
+        <main class="main-content">
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-box" style="color: #22d3ee;"></i>
+                    <h1>Gestión de Contenedores</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="create-container-btn" id="newContainerBtn">
+                        <i class="fas fa-plus"></i>
+                        Nuevo Contenedor
+                    </button>
+                </div>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div id="emptyBinsCount" class="stat-number empty">0</div>
+                    <div class="stat-label">Botes Vacíos</div>
+                </div>
+                <div class="stat-card">
+                    <div id="mediumLevelCount" class="stat-number medium">0</div>
+                    <div class="stat-label">Nivel Medio</div>
+                </div>
+                <div class="stat-card">
+                    <div id="fullBinsCount" class="stat-number full">0</div>
+                    <div class="stats-label">Botes Llenos</div>
+                </div>
+                <div class="stat-card">
+                    <div id="offlineSensorsCount" class="stat-number offline">0</div>
+                    <div class="stats-label">Sensores Offline</div>
+                </div>
+                <div class="stat-card">
+                    <div id="averageFillLevel" class="stat-number">0%</div>
+                    <div class="stats-label">Nivel Promedio</div>
+                </div>
+            </section>
+
+            <div class="containers-section">
+                <div class="section-header">
+                    <h3 class="section-title">Contenedores Monitoreados</h3>
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar bote..." id="searchInput" oninput="handleContainerSearch()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+
+                <div class="tabs-container">
+                    <button class="tab-btn active" id="activeTabBtn">
+                        Contenedores Activos
+                    </button>
+                    <button class="tab-btn" id="inactiveTabBtn">
+                        Contenedores Inactivos
+                    </button>
+                </div>
+
+                <div id="containersGrid" class="containers-grid tab-content active">
+                </div>
+
+                <div id="secondApiContainersGrid" class="containers-grid tab-content hidden">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="viewContainerModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles del Contenedor</h2>
+                <span id="closeCreateModal" onclick="closeModal('viewContainerModal')" class="close-button">&times;</span>
+            </div>
+                <div class="modal-body">
+                    
+                    <div id="viewContainerDetails">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <div class="form-buttons">
+                    
+                    <button type="button" class="btn-cancel" onclick="closeModal('viewContainerModal')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="secondApiModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles del Contenedor</h2>
+                <span id="closeViewModal" onclick="closeModal('secondApiModal')" class="close-button">&times;</span>
+
+            </div>
+            <div class="modal-body">
+                <div id="secondApiDetails" class="p-4">
+                
+            </div>
+            </div>
+            <div class="modal-actions">
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeModal('secondApiModal')">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="addContainerModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Registrar Nuevo Contenedor</h2>
+                <span id="closeViewModal" onclick="closeModal('addContainerModal')" class="close-button">&times;</span>
+            </div>
+            <div class="modal-body">
+
+                <form id="addContainerForm">
+                    <div class="form-group">
+                    <label for="newContainerDescripcion">Descripción:</label>
+                    <input type="text" id="newContainerDescripcion" name="descripcion" required>
+                </div>
+                <div class="form-group">
+                    <label for="newContainerEmpresa">Empresa:</label>
+                    <select id="newContainerEmpresa" name="idEmpresa" required>
+                        <option value="">Cargando empresas...</option>
+                    </select>
+                </div>
+                <div id="formMessage" class="error-message mt-2 text-center"></div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeModal('addContainerModal')">Cancelar</button>
+                    <button type="submit" class="btn-submit">Guardar</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="../js/contenedores.js"></script>
+    
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/authGuard.js"></script>
+</body>
+</html>

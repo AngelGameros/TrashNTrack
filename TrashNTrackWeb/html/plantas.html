@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plantas - Gestión de Desechos Tóxicos</title>
+  <link rel="stylesheet" href="../css/planta.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/themes.css">
+
+  <script type="module" src="../js/main.js"></script>
+
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+  <div class="dashboard-container">
+    <div id="sidebar-placeholder"></div>
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header">
+          <div class="page-title">
+            <i class="fas fa-industry" style="color: #22d3ee;"></i>
+            <h1>Plantas - Gestión de Desechos Tóxicos</h1>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content-area">
+        <!-- Sección de controles -->
+        <div class="controls-section">
+          <div class="filtros">
+            <input type="text" id="inputNombrePlanta" placeholder="Buscar por Nombre" />
+            <select id="selectUbicacionPlanta" aria-label="Filtrar por ubicación">
+              <option value="">Todas las ubicaciones</option>
+              <!-- Opciones llenadas dinámicamente desde JS -->
+            </select>
+          </div>
+          
+          <!-- Contenedor específico para el botón de crear -->
+          <div class="action-buttons">
+            <button id="createPlantaBtn" class="create-planta-btn">
+              <i class="fas fa-plus"></i>
+              Crear Nueva Planta
+            </button>
+          </div>
+        </div>
+        
+        <div id="plantasContainer" class="plantas-container"></div>
+      </div>
+    </main>
+  </div>
+  
+  <script type="module" src="../js/plantas.js"></script>
+  <script type="module" src="../js/sidebar.js"></script>
+  <script src="../js/authGuard.js"></script>
+</body>
+</html>

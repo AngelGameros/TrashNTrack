@@ -1,0 +1,76 @@
+{
+    "options": [
+        {
+            "id": 1002,
+            "text": "Dashboard",
+            "icon": "tachometer-alt",
+            "component": "dashboard.html"
+        },
+        {
+            "id": 1003,
+            "text": "Empresas",
+            "icon": "building",
+            "component": "empresas.html"
+        },
+        {
+            "id": 1004,
+            "text": "Plantas",
+            "icon": "industry",
+            "component": "plantas.html"
+        },
+        {
+            "id": 1005,
+            "text": "Camiones",
+            "icon": "truck",
+            "component": "camiones.html"
+        },
+        {
+            "id": 1006,
+            "text": "Rutas",
+            "icon": "route",
+            "component": "rutas.html"
+        },
+        {
+            "id": 1007,
+            "text": "Contenedores",
+            "icon": "box",
+            "component": "contenedores.html"
+        },
+        {
+            "id": 1008,
+            "text": "Incidentes",
+            "icon": "exclamation",
+            "component": "incidentes.html"
+        },
+        {
+            "id": 1009,
+            "text": "Reportes",
+            "icon": "bar",
+            "component": "reportes.html"
+        },
+        {
+            "id": 1010,
+            "text": "Normativa",
+            "icon": "cog",
+            "component": "normativas.html"
+        },
+        {
+            "id": 1011,
+            "text": "Equipo",
+            "icon": "users",
+            "component": "equipo.html"
+        },
+        {
+            "id": 1012,
+            "text": "Chat con usuarios",
+            "icon": "comments",
+            "component": "chat.html"
+        },
+        {
+            "id": 1013,
+            "text": "Logout",
+            "icon": "sign-out-alt",
+            "component": ""
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+TrashAndTrack/node_modules/
+
+# Expo
+TrashAndTrack/.expo/
+TrashAndTrack/dist/
+TrashAndTrack/web-build/
+TrashAndTrack/expo-env.d.ts
+
+# Native
+TrashAndTrack/.kotlin/
+TrashAndTrack/*.orig.*
+TrashAndTrack/*.jks
+TrashAndTrack/*.p8
+TrashAndTrack/*.p12
+TrashAndTrack/*.key
+TrashAndTrack/*.mobileprovision
+
+# Metro
+TrashAndTrack/.metro-health-check*
+
+# debug
+TrashAndTrack/npm-debug.*
+TrashAndTrack/yarn-debug.*
+TrashAndTrack/yarn-error.*
+
+# macOS
+TrashAndTrack/.DS_Store
+TrashAndTrack/*.pem
+
+# local env files
+TrashAndTrack/.env*.local
+
+# typescript
+TrashAndTrack/*.tsbuildinfo
+
+# Local Environment Variables
+.env
+
+# backend
+backend/TrashNTrack/TrashNTrack/Config/serviceAccountKey.json
+
+# ===============================================
+# Archivos específicos de Visual Studio/compilación
+# ===============================================
+# Archivos de caché/índices
+**/FileContents.dex
+**/DocumentLayout.json
+
+# Archivos de compilación .NET
+**/bin/Debug/
+**/bin/Release/
+**/obj/
+*.dll
+*.exe
+*.pdb
+apphost.exe
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.sourcelink.json
+*.suo
+*.vsidx
+
+# Archivos temporales con GUIDs
+-????????-????-????-????-????????????

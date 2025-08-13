@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Contenedor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS para estilos -->
+    <link href="../css/dashboard.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <script type="module" src="../js/main.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Fondo gris claro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 16px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+        }
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #22d3ee;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0ea5e9;
+        }
+        .btn-secondary {
+            background: #64748b;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        .message-box {
+            background-color: #dbeafe;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #93c5fd;
+            display: none; /* Oculto por defecto */
+        }
+        .message-box.error {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border-color: #ef4444;
+        }
+        .error-message {
+            color: #dc2626;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        input.invalid, select.invalid, textarea.invalid {
+            border-color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+    <div class="form-container">
+        <h2 class="form-title">Registrar Nuevo Contenedor</h2>
+        <div id="messageBox" class="message-box"></div>
+        <form id="newContainerForm">
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" rows="3" placeholder="Descripción detallada del contenedor y su propósito." required></textarea>
+                <div id="descripcionError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="fechaRegistro">Fecha de Registro:</label>
+                <input type="date" id="fechaRegistro" required>
+                <div id="fechaRegistroError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="tipoResiduo">Tipo de Residuo:</label>
+                <select id="tipoResiduo" required>
+                    <option value="">Seleccione un tipo de residuo</option>
+                    <!-- Opciones se cargarán dinámicamente -->
+                </select>
+                <div id="tipoResiduoError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="tipoContenedor">Tipo de Contenedor:</label>
+                <select id="tipoContenedor" required>
+                    <option value="">Seleccione un tipo de contenedor</option>
+                    <!-- Opciones se cargarán dinámicamente -->
+                </select>
+                <div id="tipoContenedorError" class="error-message"></div>
+            </div>
+            <!-- Los campos id_empresa se manejarán en el script -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='contenedores.html'">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Registrar Contenedor</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="../js/contenedores.js"></script>
+    <script type="module">
+        import { addNewContainerAndSave, showMessage, displayFieldError, validateDescripcion, TIPO_RESIDUOS_DATA, TIPO_CONTENEDORES_DATA } from '../js/contenedores.js';
+
+        // Función para cargar opciones en los select
+        function populateSelects() {
+            const tipoResiduoSelect = document.getElementById('tipoResiduo');
+            TIPO_RESIDUOS_DATA.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo.id;
+                option.textContent = tipo.nombre;
+                tipoResiduoSelect.appendChild(option);
+            });
+
+            const tipoContenedorSelect = document.getElementById('tipoContenedor');
+            TIPO_CONTENEDORES_DATA.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo.id;
+                option.textContent = tipo.nombre;
+                tipoContenedorSelect.appendChild(option);
+            });
+        }
+
+        // Manejar el envío del formulario de Nuevo Contenedor
+        document.getElementById('newContainerForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Limpiar mensajes de error previos
+            displayFieldError('descripcion', '');
+            displayFieldError('fechaRegistro', '');
+            displayFieldError('tipoResiduo', '');
+            displayFieldError('tipoContenedor', '');
+
+            const descripcion = document.getElementById('descripcion').value;
+            const fechaRegistro = document.getElementById('fechaRegistro').value;
+            const tipoResiduoId = parseInt(document.getElementById('tipoResiduo').value);
+            const tipoContenedorId = parseInt(document.getElementById('tipoContenedor').value);
+
+            let isValid = true;
+
+            // Validaciones
+            const descripcionError = validateDescripcion(descripcion);
+            if (descripcionError) {
+                displayFieldError('descripcion', descripcionError);
+                isValid = false;
+            }
+            if (!fechaRegistro) {
+                displayFieldError('fechaRegistro', 'La fecha de registro es obligatoria.');
+                isValid = false;
+            }
+            if (isNaN(tipoResiduoId)) {
+                displayFieldError('tipoResiduo', 'Debe seleccionar un tipo de residuo.');
+                isValid = false;
+            }
+            if (isNaN(tipoContenedorId)) {
+                displayFieldError('tipoContenedor', 'Debe seleccionar un tipo de contenedor.');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showMessage("Por favor, corrige los errores en el formulario.", true);
+                return;
+            }
+
+            // Obtener nombres y capacidad máxima para guardar en el objeto del contenedor
+            const tipoResiduo = TIPO_RESIDUOS_DATA.find(t => t.id === tipoResiduoId);
+            const tipoContenedor = TIPO_CONTENEDORES_DATA.find(t => t.id === tipoContenedorId);
+
+            const newContainerData = {
+                descripcion: descripcion,
+                fecha_registro: fechaRegistro,
+                id_empresa: 'simulated-company-id', // ID de empresa simulado
+                id_tipo_residuo: tipoResiduoId,
+                tipo_residuo_nombre: tipoResiduo ? tipoResiduo.nombre : 'Desconocido',
+                id_tipo_contenedor: tipoContenedorId,
+                tipo_contenedor_nombre: tipoContenedor ? tipoContenedor.nombre : 'Desconocido',
+                capacidad_maxima_contenedor: tipoContenedor ? tipoContenedor.capacidad_maxima : null,
+            };
+
+            try {
+                const result = addNewContainerAndSave(newContainerData); // Usar la función importada
+                console.log("Contenedor registrado con ID (localStorage): ", result.id);
+                showMessage("Contenedor registrado exitosamente (simulado)!");
+                document.getElementById('newContainerForm').reset(); // Limpiar formulario
+                
+                // Redirigir a contenedores.html después de un breve retraso para que el usuario vea el mensaje
+                setTimeout(() => {
+                    window.location.href = 'contenedores.html';
+                }, 1500); // Redirige después de 1.5 segundos
+
+            } catch (error) {
+                console.error("Error al registrar el contenedor (localStorage):", error);
+                showMessage(`Error al registrar el contenedor (localStorage): ${error.message}`, true);
+            }
+        });
+
+        // Inicializar la aplicación y poblar los selects
+        window.onload = () => {
+            populateSelects();
+            // Establecer la fecha actual por defecto en el campo de fecha
+            document.getElementById('fechaRegistro').valueAsDate = new Date();
+            console.log("Aplicación de registro de contenedores inicializada con localStorage.");
+        };
+    </script>
+</body>
+</html>

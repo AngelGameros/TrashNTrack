@@ -1,0 +1,20 @@
+﻿{
+    "sqlServer": {
+        "Server": "LAPTOP-HVT2AIEI\\SQLEXPRESS",
+        "Database": "tnt_2",
+        "Trusted_Connection": "True",
+        "TrustServer_Certificate": "True"
+    },
+    "Paths": {
+        "Domain": "http://localhost/callcenter/",
+        "Photos": {
+            "Users": "photos/users_photos",
+            "Agents": "photos/agents_photos"
+        }
+    },
+    "mongoDb": {
+        "ConnectionString": "mongodb+srv://gameros:A.gameros17@cluster0.6hw07q7.mongodb.net/",
+        "DatabaseName": "containers",
+        "CollectionName": "containers"
+    }
+}

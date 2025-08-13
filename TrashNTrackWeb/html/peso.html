@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel de Llenado - Dashboard de Residuos Tóxicos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../css/peso.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+<body>
+    <div class="dashboard-container">
+        <div id="sidebar-placeholder"></div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-weight" style="color: #22d3ee;"></i>
+                    <h1>Monitor de Nivel de Llenado</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Exportar Datos
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-calibrate"></i>
+                        Calibrar Sensores
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number safe">198</div>
+                    <div class="stat-label">Botes en nivel seguro</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number warning">89</div>
+                    <div class="stat-label">Nivel de advertencia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number critical">42</div>
+                    <div class="stat-label">Nivel crítico</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #ec4899;">13</div>
+                    <div class="stat-label">Sobrecarga detectada</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number info">68.5%</div>
+                    <div class="stat-label">Nivel promedio general</div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Tendencia de Llenado (24 horas)</h3>
+                        <span class="chart-period">Tiempo real</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="fillTrendChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Distribución por Peso</h3>
+                        <span class="chart-period">Actual</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weightDistributionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weight Monitor -->
+            <section class="weight-monitor">
+                <div class="monitor-header">
+                    <h3 class="monitor-title">Monitoreo de Peso por Contenedor</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">
+                            <i class="fas fa-filter"></i>
+                            Filtrar por Zona
+                        </button>
+                        <button class="btn btn-primary" style="padding: 6px 12px; font-size: 12px;">
+                            <i class="fas fa-sync"></i>
+                            Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="weight-grid">
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-001</span>
+                            <span class="weight-status status-critical">Crítico</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">485</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress critical" style="width: 97%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">97%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">15kg</div>
+                                <div class="info-label">Espacio restante</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Químicos</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Zona Norte</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-001-N<br>
+                            <strong>Última calibración:</strong> Hace 3 días<br>
+                            <strong>Estado del sensor:</strong> Funcionando
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-arrow-up trend-icon trend-up"></i>
+                            <span style="font-size: 12px; color: #64748b;">+12kg en las últimas 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-002</span>
+                            <span class="weight-status status-warning">Advertencia</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">325</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress warning" style="width: 65%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">65%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">175kg</div>
+                                <div class="info-label">Espacio restante</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Biológicos</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Hospital</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-002-H<br>
+                            <strong>Última calibración:</strong> Hace 1 día<br>
+                            <strong>Estado del sensor:</strong> Funcionando
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-arrow-up trend-icon trend-up"></i>
+                            <span style="font-size: 12px; color: #64748b;">+8kg en las últimas 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-003</span>
+                            <span class="weight-status status-safe">Seguro</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">125</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress safe" style="width: 25%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">25%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">375kg</div>
+                                <div class="info-label">Espacio restante</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Radiactivos</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Centro Médico</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-003-CM<br>
+                            <strong>Última calibración:</strong> Ayer<br>
+                            <strong>Estado del sensor:</strong> Funcionando
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-minus trend-icon trend-stable"></i>
+                            <span style="font-size: 12px; color: #64748b;">Sin cambios significativos</span>
+                        </div>
+                    </div>
+
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-004</span>
+                            <span class="weight-status status-overload">Sobrecarga</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">520</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress overload" style="width: 100%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">104%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">-20kg</div>
+                                <div class="info-label">Sobrecarga</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Industriales</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Planta Química</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-004-PQ<br>
+                            <strong>Última calibración:</strong> Hace 2 días<br>
+                            <strong>Estado del sensor:</strong> Alerta de sobrecarga
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-exclamation-triangle trend-icon trend-up"></i>
+                            <span style="font-size: 12px; color: #ef4444;">¡RECOLECCIÓN URGENTE!</span>
+                        </div>
+                    </div>
+
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-005</span>
+                            <span class="weight-status status-warning">Advertencia</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">380</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress warning" style="width: 76%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">76%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">120kg</div>
+                                <div class="info-label">Espacio restante</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Farmacéuticos</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Farmacia</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-005-F<br>
+                            <strong>Última calibración:</strong> Hace 4 días<br>
+                            <strong>Estado del sensor:</strong> Funcionando
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-arrow-down trend-icon trend-down"></i>
+                            <span style="font-size: 12px; color: #64748b;">-5kg en las últimas 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="weight-card">
+                        <div class="weight-header">
+                            <span class="container-id">BOTE-006</span>
+                            <span class="weight-status status-safe">Seguro</span>
+                        </div>
+                        <div class="weight-display">
+                            <div class="weight-value">95</div>
+                            <div class="weight-unit">kg de 500kg máx.</div>
+                        </div>
+                        <div class="weight-bar">
+                            <div class="weight-progress safe" style="width: 19%"></div>
+                        </div>
+                        <div class="weight-info">
+                            <div class="info-item">
+                                <div class="info-value">19%</div>
+                                <div class="info-label">Capacidad</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">405kg</div>
+                                <div class="info-label">Espacio restante</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Corrosivos</div>
+                                <div class="info-label">Tipo residuo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value">Laboratorio</div>
+                                <div class="info-label">Ubicación</div>
+                            </div>
+                        </div>
+                        <div class="weight-details">
+                            <strong>Sensor ID:</strong> WS-006-L<br>
+                            <strong>Última calibración:</strong> Hoy<br>
+                            <strong>Estado del sensor:</strong> Funcionando
+                        </div>
+                        <div class="weight-trend">
+                            <i class="fas fa-arrow-up trend-icon trend-up"></i>
+                            <span style="font-size: 12px; color: #64748b;">+3kg en las últimas 2 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/peso.js"></script>
+    <script type="module" src="../js/sidebar.js"></script>
+    <script src="../js/authGuard.js"></script>
+</body>
+</html>

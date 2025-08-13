@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrador</title>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <style>
+        :root {
+            --primary-blue: #007bff;
+            --dark-blue: #0056b3;
+            --text-dark: #333;
+            --bg-lighter: #eef2f5;
+            --border-color: #e0e6ed;
+            --shadow-deep: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-lighter);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-deep);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-size: 18px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 19px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .login-container button:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .login-container button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .error-message {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            z-index: 1000;
+            gap: 20px;
+        }
+
+        .loading-spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Acceso de Administrador</h2>
+        <input type="email" id="adminEmail" placeholder="Correo electrónico de administrador" autocomplete="username">
+        <input type="password" id="adminPassword" placeholder="Contraseña" autocomplete="current-password">
+        <button id="loginButton">Iniciar Sesión</button>
+        <p id="loginError" class="error-message"></p>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Iniciando sesión...</p>
+    </div>
+
+    <!-- SOLO cargar login.js, nada más -->
+    <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Camión</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link href="../css/dashboard.css" rel="stylesheet">
+    <script type="module" src="../js/main.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Fondo gris claro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 16px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #22d3ee;
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
+        }
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #22d3ee;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0ea5e9;
+        }
+        .btn-secondary {
+            background: #64748b;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        .message-box {
+            background-color: #dbeafe;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #93c5fd;
+            display: none; /* Oculto por defecto */
+        }
+        .message-box.error {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border-color: #ef4444;
+        }
+        .error-message {
+            color: #dc2626;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        input.invalid {
+            border-color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+    <div class="form-container">
+        <h2 class="form-title">Registrar Nuevo Camión</h2>
+        <div id="messageBox" class="message-box"></div>
+        <form id="newTruckForm">
+            <div class="form-group">
+                <label for="placa">Placa:</label>
+                <input type="text" id="placa" placeholder="ABC-123-XYZ" required>
+                <div id="placaError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" placeholder="Volvo">
+                <div id="marcaError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" placeholder="FH16">
+                <div id="modeloError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="anio">Año:</label>
+                <input type="number" id="anio" placeholder="2023">
+                <div id="anioError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="capacidadCarga">Capacidad de Carga (Ton):</label>
+                <input type="number" step="0.01" id="capacidadCarga" placeholder="25.50">
+                <div id="capacidadCargaError" class="error-message"></div>
+            </div>
+            <!-- Los campos id_usuario e id_empresa se manejarán en el script -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='camiones.html'">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Registrar Camión</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="../js/registrarCamion.js"></script>
+    <script src="../js/authGuard.js"></script>
+</body>
+</html>

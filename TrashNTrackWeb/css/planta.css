@@ -1,0 +1,932 @@
+/* ========================================
+   🌱 PLANTAS - DISEÑO CON TU PALETA AZUL
+   ======================================== */
+
+/* Variables usando tu paleta exacta */
+:root {
+  /* Tu paleta de azules exacta */
+  --blue-50: #E7F0FE;
+  --blue-100: #BBD4FC;
+  --blue-200: #8FB8FA;
+  --blue-300: #639CF8;
+  --blue-400: #3B82F6;
+  --blue-500: #0B64F4;
+  --blue-600: #0952C8;
+  --blue-700: #07409C;
+  --blue-800: #052E70;
+  --blue-900: #031C44;
+  --blue-950: #010A18;
+  
+  /* Colores complementarios */
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  
+  /* Colores de estado usando tu paleta */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  
+  /* Sombras con tu azul */
+  --shadow-blue-sm: 0 1px 2px 0 rgba(11, 100, 244, 0.05);
+  --shadow-blue: 0 1px 3px 0 rgba(11, 100, 244, 0.1), 0 1px 2px 0 rgba(11, 100, 244, 0.06);
+  --shadow-blue-md: 0 4px 6px -1px rgba(11, 100, 244, 0.1), 0 2px 4px -1px rgba(11, 100, 244, 0.06);
+  --shadow-blue-lg: 0 10px 15px -3px rgba(11, 100, 244, 0.1), 0 4px 6px -2px rgba(11, 100, 244, 0.05);
+  --shadow-blue-xl: 0 20px 25px -5px rgba(11, 100, 244, 0.1), 0 10px 10px -5px rgba(11, 100, 244, 0.04);
+  
+  /* Gradientes con tu paleta */
+  --gradient-primary: linear-gradient(135deg, var(--blue-400) 0%, var(--blue-600) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--blue-300) 0%, var(--blue-500) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+  --gradient-light: linear-gradient(135deg, var(--blue-50) 0%, var(--blue-100) 100%);
+  
+  /* Transiciones */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s ease;
+}
+
+/* ========================================
+   🎛️ SECCIÓN DE CONTROLES
+   ======================================== */
+
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-blue-lg);
+  border: 1px solid var(--blue-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.controls-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.filtros {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-width: 320px;
+}
+
+.filtros input,
+.filtros select {
+  padding: 14px 16px;
+  border: 2px solid var(--blue-200);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 160px;
+  background: var(--white);
+  color: var(--blue-900);
+  transition: var(--transition);
+  box-shadow: var(--shadow-blue-sm);
+}
+
+.filtros input::placeholder {
+  color: var(--blue-400);
+  font-weight: 400;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(11, 100, 244, 0.1), var(--shadow-blue-md);
+  transform: translateY(-1px);
+  background: var(--blue-50);
+}
+
+.filtros input:hover,
+.filtros select:hover {
+  border-color: var(--blue-300);
+  box-shadow: var(--shadow-blue);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ========================================
+   🚀 BOTÓN DE CREAR PLANTA
+   ======================================== */
+
+.create-planta-btn {
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-blue-lg);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.create-planta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.create-planta-btn:hover::before {
+  left: 100%;
+}
+
+.create-planta-btn:hover {
+  background: var(--gradient-accent);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-blue-xl);
+}
+
+.create-planta-btn:active {
+  transform: translateY(0) scale(1);
+}
+
+.create-planta-btn i {
+  font-size: 16px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ========================================
+   ✨ MODALES CON TU PALETA
+   ======================================== */
+
+.planta-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(1, 10, 24, 0.8);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: var(--white);
+  margin: 3% auto;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 650px;
+  position: relative;
+  box-shadow: var(--shadow-blue-xl);
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  background: var(--gradient-primary);
+  color: var(--white);
+  padding: 24px 32px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  position: relative;
+  z-index: 2;
+}
+
+.close-button,
+.close-button-create {
+  color: var(--white);
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 3;
+}
+
+.close-button:hover,
+.close-button-create:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1) rotate(90deg);
+}
+
+.modal-body {
+  padding: 32px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* ========================================
+   🏷️ PESTAÑAS CON TU PALETA
+   ======================================== */
+
+.tabs {
+  display: flex;
+  margin-bottom: 32px;
+  background: var(--blue-50);
+  border-radius: 12px;
+  padding: 4px;
+  position: relative;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue-500);
+  border-radius: 8px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: var(--blue-700);
+  background: var(--white);
+}
+
+.tab-button.active {
+  color: var(--white);
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-blue);
+}
+
+.tab-button i {
+  font-size: 16px;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeInUp 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   📝 FORMULARIOS CON TU PALETA
+   ======================================== */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--blue-800);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--blue-200);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box;
+  transition: var(--transition);
+  background: var(--white);
+  color: var(--blue-900);
+}
+
+.form-group input::placeholder {
+  color: var(--blue-400);
+  font-weight: 400;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(11, 100, 244, 0.1);
+  background: var(--blue-50);
+  transform: translateY(-1px);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  border-color: var(--blue-300);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-help {
+  font-size: 12px;
+  color: var(--blue-600);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.form-help a {
+  color: var(--blue-500);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.form-help a:hover {
+  color: var(--blue-700);
+  text-decoration: underline;
+}
+
+.error-message {
+  color: var(--danger);
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========================================
+   🎯 BOTONES DE FORMULARIO
+   ======================================== */
+
+.form-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--blue-200);
+}
+
+.form-buttons button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--transition);
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.form-buttons button:hover::before {
+  left: 100%;
+}
+
+#cancelarPlantaBtn,
+#cancelarUbicacionBtn {
+  background: var(--blue-600);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(9, 82, 200, 0.2);
+}
+
+#cancelarPlantaBtn:hover,
+#cancelarUbicacionBtn:hover {
+  background: var(--blue-700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(9, 82, 200, 0.3);
+}
+
+#crearPlantaBtn {
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+#crearPlantaBtn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+#crearUbicacionBtn {
+  background: linear-gradient(135deg, var(--warning), #d97706);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+#crearUbicacionBtn:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+/* ========================================
+   💬 MENSAJES CON TU PALETA
+   ======================================== */
+
+.message-container {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  animation: messageSlide 0.4s ease;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#loadingMessage {
+  background: var(--blue-100);
+  color: var(--blue-800);
+  border: 1px solid var(--blue-300);
+}
+
+#successMessage {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+#errorMessage {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* ========================================
+   🌱 TARJETAS DE PLANTAS CON TU PALETA
+   ======================================== */
+
+.plantas-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.planta-card {
+  background: var(--white);
+  border: 1px solid var(--blue-200);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-blue-lg);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.planta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-secondary);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.planta-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(11, 100, 244, 0.05) 0%, transparent 70%);
+  transition: all 0.5s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.planta-card:hover::before {
+  transform: scaleX(1);
+}
+
+.planta-card:hover::after {
+  width: 400px;
+  height: 400px;
+}
+
+.planta-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-blue-xl);
+  border-color: var(--blue-400);
+}
+
+.planta-card h3 {
+  margin: 0 0 16px 0;
+  color: var(--blue-900);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  position: relative;
+  z-index: 2;
+}
+
+.planta-card p {
+  margin: 12px 0;
+  color: var(--blue-600);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.planta-card p strong {
+  color: var(--blue-800);
+  min-width: 130px;
+  font-weight: 600;
+}
+
+.planta-card p i {
+  color: var(--blue-500);
+  width: 16px;
+  text-align: center;
+}
+
+.btn-detalles {
+  background: var(--gradient-accent);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  margin-top: 16px;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.btn-detalles:hover {
+  background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-blue-md);
+}
+
+/* ========================================
+   📋 DETALLES EN MODAL
+   ======================================== */
+
+.detail-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--blue-100);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition-fast);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item:hover {
+  background: var(--blue-50);
+  margin: 0 -16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.detail-item strong {
+  color: var(--blue-800);
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.detail-item i {
+  color: var(--blue-500);
+  width: 16px;
+  text-align: center;
+}
+
+/* ========================================
+   📱 RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+  
+  .filtros {
+    flex-direction: column;
+    min-width: auto;
+    gap: 12px;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+    border-radius: 16px;
+  }
+  
+  .modal-header {
+    padding: 20px 24px;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  .modal-body {
+    padding: 24px;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .form-buttons button {
+    width: 100%;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .plantas-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .tabs {
+    flex-direction: column;
+    padding: 0;
+    background: transparent;
+    gap: 8px;
+  }
+  
+  .tab-button {
+    background: var(--blue-50);
+    border: 1px solid var(--blue-200);
+    justify-content: flex-start;
+  }
+  
+  .tab-button.active {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-color: var(--blue-500);
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros input,
+  .filtros select {
+    min-width: auto;
+    padding: 12px 14px;
+  }
+  
+  .create-planta-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  
+  .modal-header h2 {
+    font-size: 18px;
+  }
+  
+  .planta-card {
+    padding: 20px;
+  }
+  
+  .planta-card h3 {
+    font-size: 18px;
+  }
+  
+  .planta-card p {
+    font-size: 13px;
+  }
+  
+  .planta-card p strong {
+    min-width: 110px;
+  }
+}
+
+/* ========================================
+   ✨ EFECTOS ESPECIALES CON TU PALETA
+   ======================================== */
+
+/* Scrollbar personalizada con tu azul */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--blue-100);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue-500);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue-600);
+}
+
+/* Selección de texto con tu paleta */
+::selection {
+  background: rgba(11, 100, 244, 0.2);
+  color: var(--blue-900);
+}
+
+/* Estados de loading con tu azul */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(11, 100, 244, 0.3), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Focus mejorado con tu paleta */
+*:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
+}
+
+/* Estados disabled */
+button:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+button:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}

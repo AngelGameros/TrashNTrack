@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash & Track - Gestión de Rutas Baja California</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/rutas.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/themes.css">
+
+
+    <script type="module" src="../js/main.js"></script>
+    
+</head>
+<body>
+
+    <div id="side-menu"></div>
+    <div id="content"></div>
+
+    <div class="container">
+        <div id="sidebar-placeholder"></div>
+        <div class="main-content">
+            <header class="header">
+                <div class="page-title">
+                    <i class="fas fa-route" style="color: #22d3ee;"></i>
+                    <h1>Gestión de Rutas</h1>
+                </div>
+                <div class="header-actions">
+                    
+                    <button class="create-route-btn" id="newContainerBtn">
+                        <i class="fas fa-plus"></i>
+                        Nueva Ruta
+                    </button>
+                </div>
+            </header>
+
+            
+            <div class="content-area">
+                <div class="map-section">
+                    <div class="map-container">
+                        <div class="map-header">
+                            <h2 class="map-title">Mapa de Rutas - Baja California</h2>
+                            
+                        </div>
+                        <div class="map-canvas">
+                            <div id="routeMap"></div> 
+                            <div class="loading-overlay" id="loadingOverlay">
+                                <div class="loading-spinner"></div>
+                                <p>Cargando datos...</p>
+                            </div>
+                            
+                            <div id="routeInfo" class="route-info">
+                                <h3 id="routeInfoTitle"></h3>
+                                <div id="routeInfoDetails" class="route-info-details"></div>
+                                <button class="clear-selection-btn" onclick="clearSelection()">Limpiar Selección</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="route-list">
+                    <div class="route-list-container">
+                        <div class="route-list-header">
+                            <h2 class="route-list-title">Lista de Rutas</h2>
+                            
+                            <div class="search-box">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" class="search-input" placeholder="Buscar ruta, conductor..." onkeyup="filterRoutes(this.value)">
+                            </div>
+
+                            <div class="alerts-section" id="alertsSection">
+                                </div>
+                        </div>
+
+                        <div class="route-list-content" id="routeListContent">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Nueva Ruta -->
+    <div id="newRouteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal modal-centered" id="routeModal"></div>
+            <div class="modal-header">
+                <h2>Nueva Ruta</h2>
+                <span class="close" onclick="closeModal('newRouteModal')">&times;</span>
+            </div>
+            <form id="newRouteForm" class="modal-body">
+                <div class="form-group">
+                    <label for="routeName">Nombre de la Ruta *</label>
+                    <input type="text" id="routeName" name="routeName" required placeholder="Ej: Ruta Norte A-B">
+                </div>
+
+                <div class="form-group">
+                    <label for="routeDescription">Descripción</label>
+                    <textarea id="routeDescription" name="routeDescription" rows="3" placeholder="Descripción de la ruta"></textarea>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="routeStatus">Estado de la Ruta</label>
+                    <select id="routeStatus" name="routeStatus">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Activa">Activa</option>
+                        <option value="Completada">Completada</option>
+                        <option value="Retrasada">Retrasada</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('newRouteModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Crear Ruta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script type="module" src="../js/rutas.js"></script> 
+    <script type="module" src="../js/sidebar.js"></script>
+    <script src="../js/authGuard.js"></script>
+</body>
+</html>

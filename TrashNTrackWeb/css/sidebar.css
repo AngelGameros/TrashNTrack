@@ -1,0 +1,451 @@
+/*
+* =============================================
+* CSS para el Sidebar - CERO PARPADEO PARA ELEMENTOS DINÁMICOS
+* Especialmente diseñado para elementos creados con JavaScript
+* =============================================
+*/
+
+/* Variables específicas del sidebar */
+:root {
+  --sidebar-width: 280px;
+  --sidebar-z-index: 9999;
+  --sidebar-font-family: -apple-system, BlinkMacSystemFont, "Segui UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sidebar-font-weight: 500;
+  --sidebar-font-size: 18px;
+  --sidebar-icon-size: 20px;
+}
+
+/* ELIMINAR TODAS LAS TRANSICIONES GLOBALMENTE - MÁS AGRESIVO */
+#side-menu,
+#side-menu *,
+#side-menu *::before,
+#side-menu *::after,
+#side-menu.sidebar-container,
+#side-menu.sidebar-container *,
+#side-menu.sidebar-container *::before,
+#side-menu.sidebar-container *::after,
+/* ESPECÍFICO PARA ELEMENTOS DINÁMICOS */
+  #side-menu
+  div,
+#side-menu div *,
+#side-menu div *::before,
+#side-menu div *::after,
+#side-menu .side-menu-option,
+#side-menu .side-menu-option *,
+#side-menu .side-menu-option *::before,
+#side-menu .side-menu-option *::after,
+#side-menu .side-menu-icon,
+#side-menu .side-menu-icon *,
+#side-menu .side-menu-icon *::before,
+#side-menu .side-menu-icon *::after,
+#side-menu .side-menu-label,
+#side-menu .side-menu-label *,
+#side-menu .side-menu-label *::before,
+#side-menu .side-menu-label *::after {
+  transition: none !important;
+  animation: none !important;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+
+  /* FORZAR ESTABILIDAD EN ELEMENTOS DINÁMICOS */
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* Contenedor principal del sidebar */
+#side-menu,
+#side-menu.sidebar-container {
+  position: fixed !important;
+  width: var(--sidebar-width) !important;
+  background: var(--sideMenuBackground) !important;
+  color: var(--sideMenuNormalText) !important;
+  padding: 20px 0 !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  z-index: var(--sidebar-z-index) !important;
+  list-style: none !important;
+  margin: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  box-sizing: border-box !important;
+  font-family: var(--sidebar-font-family) !important;
+  font-weight: var(--sidebar-font-weight) !important;
+  font-size: var(--sidebar-font-size) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+
+  /* ESTABILIZAR RENDERIZADO PARA CONTENIDO DINÁMICO */
+  contain: strict !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+
+/* TÍTULO DEL SIDEBAR */
+#side-menu #sideBarTitle,
+#side-menu.sidebar-container #sideBarTitle {
+  color: var(--sideMenuNormalText) !important;
+  font-family: var(--sidebar-font-family) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  padding: 0 20px 20px 20px !important;
+  margin: 0 0 20px 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  /* ELIMINAR PARPADEO EN TÍTULO */
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+}
+
+/* ESTILOS PARA ELEMENTOS CREADOS DINÁMICAMENTE */
+/* Usar selectores más específicos para elementos dinámicos */
+
+/* Opciones del menú creadas dinámicamente */
+#side-menu div[id^="side-menu-option-"],
+#side-menu .side-menu-option,
+#side-menu.sidebar-container div[id^="side-menu-option-"],
+#side-menu.sidebar-container .side-menu-option {
+  display: flex !important;
+  align-items: center !important;
+  padding: 12px 20px !important;
+  margin: 5% 0 !important;
+  color: var(--sideMenuNormalText) !important;
+  text-decoration: none !important;
+  border-left: 3px solid transparent !important;
+  cursor: pointer !important;
+  font-family: var(--sidebar-font-family) !important;
+  font-size: var(--sidebar-font-size) !important;
+  font-weight: var(--sidebar-font-weight) !important;
+  line-height: 1.4 !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  /* ELIMINAR COMPLETAMENTE CUALQUIER TRANSICIÓN */
+  transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+
+  /* ESTABILIZAR ELEMENTOS DINÁMICOS */
+  contain: layout style !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* Estados hover para elementos dinámicos */
+#side-menu div[id^="side-menu-option-"]:hover,
+#side-menu .side-menu-option:hover,
+#side-menu.sidebar-container div[id^="side-menu-option-"]:hover,
+#side-menu.sidebar-container .side-menu-option:hover {
+  background-color: var(--sideMenuHover) !important;
+  color: var(--sideMenuSelectedText) !important;
+  border-left-color: var(--sideMenuLogo) !important;
+
+  /* ASEGURAR CAMBIO INSTANTÁNEO EN HOVER */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+}
+
+/* Estado active para elementos dinámicos */
+#side-menu div[id^="side-menu-option-"].active,
+#side-menu .side-menu-option.active,
+#side-menu.sidebar-container div[id^="side-menu-option-"].active,
+#side-menu.sidebar-container .side-menu-option.active {
+  background-color: var(--sideMenuHover) !important;
+  color: var(--sideMenuSelectedText) !important;
+  border-left-color: var(--sideMenuLogo) !important;
+  font-weight: 600 !important;
+
+  /* ELIMINAR TRANSICIONES EN ESTADO ACTIVO */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+}
+
+/* Estado :active (al hacer clic) para elementos dinámicos */
+#side-menu div[id^="side-menu-option-"]:active,
+#side-menu .side-menu-option:active,
+#side-menu.sidebar-container div[id^="side-menu-option-"]:active,
+#side-menu.sidebar-container .side-menu-option:active {
+  background-color: var(--sideMenuHover) !important;
+  color: var(--sideMenuSelectedText) !important;
+  border-left-color: var(--sideMenuLogo) !important;
+
+  /* PREVENIR PARPADEO AL HACER CLIC */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+}
+
+/* ICONOS CREADOS DINÁMICAMENTE */
+#side-menu .side-menu-icon,
+#side-menu div[class="side-menu-icon"],
+#side-menu.sidebar-container .side-menu-icon,
+#side-menu.sidebar-container div[class="side-menu-icon"] {
+  width: 24px !important;
+  height: 24px !important;
+  margin-right: 15px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  font-size: var(--sidebar-icon-size) !important;
+  line-height: 1 !important;
+  color: inherit !important;
+
+  /* ELIMINAR PARPADEO EN ICONOS DINÁMICOS */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* ICONOS FONT AWESOME CREADOS DINÁMICAMENTE */
+#side-menu .side-menu-icon i,
+#side-menu .side-menu-icon i[class^="fas fa-"],
+#side-menu .side-menu-icon i[class*=" fas fa-"],
+#side-menu .side-menu-icon i[class^="far fa-"],
+#side-menu .side-menu-icon i[class*=" far fa-"],
+#side-menu .side-menu-icon i[class^="fab fa-"],
+#side-menu .side-menu-icon i[class*=" fab fa-"],
+#side-menu .side-menu-icon .fas,
+#side-menu .side-menu-icon .far,
+#side-menu .side-menu-icon .fab,
+#side-menu.sidebar-container .side-menu-icon i,
+#side-menu.sidebar-container .side-menu-icon i[class^="fas fa-"],
+#side-menu.sidebar-container .side-menu-icon i[class*=" fas fa-"],
+#side-menu.sidebar-container .side-menu-icon i[class^="far fa-"],
+#side-menu.sidebar-container .side-menu-icon i[class*=" far fa-"],
+#side-menu.sidebar-container .side-menu-icon i[class^="fab fa-"],
+#side-menu.sidebar-container .side-menu-icon i[class*=" fab fa-"],
+#side-menu.sidebar-container .side-menu-icon .fas,
+#side-menu.sidebar-container .side-menu-icon .far,
+#side-menu.sidebar-container .side-menu-icon .fab {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: 1 !important;
+
+  /* PRESERVAR FUENTE DE FONT AWESOME */
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome" !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+
+  /* ELIMINAR PARPADEO EN ICONOS FA */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* PSEUDO-ELEMENTOS DE FONT AWESOME */
+#side-menu .side-menu-icon i::before,
+#side-menu .side-menu-icon i::after,
+#side-menu .side-menu-icon .fas::before,
+#side-menu .side-menu-icon .far::before,
+#side-menu .side-menu-icon .fab::before,
+#side-menu.sidebar-container .side-menu-icon i::before,
+#side-menu.sidebar-container .side-menu-icon i::after,
+#side-menu.sidebar-container .side-menu-icon .fas::before,
+#side-menu.sidebar-container .side-menu-icon .far::before,
+#side-menu.sidebar-container .side-menu-icon .fab::before {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+
+  /* ELIMINAR PARPADEO EN PSEUDO-ELEMENTOS */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+}
+
+/* LABELS CREADOS DINÁMICAMENTE */
+#side-menu .side-menu-label,
+#side-menu div[class="side-menu-label"],
+#side-menu.sidebar-container .side-menu-label,
+#side-menu.sidebar-container div[class="side-menu-label"] {
+  flex-grow: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-family: var(--sidebar-font-family) !important;
+  font-size: var(--sidebar-font-size) !important;
+  font-weight: var(--sidebar-font-weight) !important;
+  line-height: 1.4 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+
+  /* ELIMINAR PARPADEO EN LABELS DINÁMICOS */
+  transition: none !important;
+  -webkit-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* PROTECCIÓN ESPECÍFICA PARA LA MITAD INFERIOR DEL SIDEBAR */
+/* Elementos que aparecen después del 50% del sidebar */
+#side-menu > div:nth-child(n + 4),
+#side-menu > div:nth-child(n + 4) *,
+#side-menu > div:nth-child(n + 4) *::before,
+#side-menu > div:nth-child(n + 4) *::after,
+#side-menu.sidebar-container > div:nth-child(n + 4),
+#side-menu.sidebar-container > div:nth-child(n + 4) *,
+#side-menu.sidebar-container > div:nth-child(n + 4) *::before,
+#side-menu.sidebar-container > div:nth-child(n + 4) *::after {
+  /* FORZAR ANTI-PARPADEO EN LA MITAD INFERIOR */
+  transition: none !important;
+  animation: none !important;
+  -webkit-transition: none !important;
+  -webkit-animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  contain: layout style !important;
+}
+
+/* PROTECCIÓN CONTRA MODIFICACIONES DINÁMICAS */
+#side-menu,
+#side-menu.sidebar-container {
+  backdrop-filter: none !important;
+  filter: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  contain: strict !important;
+}
+
+/* SCROLLBAR SIN TRANSICIONES */
+#side-menu::-webkit-scrollbar,
+#side-menu.sidebar-container::-webkit-scrollbar {
+  width: 6px !important;
+  transition: none !important;
+}
+
+#side-menu::-webkit-scrollbar-track,
+#side-menu.sidebar-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transition: none !important;
+}
+
+#side-menu::-webkit-scrollbar-thumb,
+#side-menu.sidebar-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 3px !important;
+  transition: none !important;
+}
+
+#side-menu::-webkit-scrollbar-thumb:hover,
+#side-menu.sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  transition: none !important;
+}
+
+/* ELIMINAR SELECCIÓN DE TEXTO QUE PUEDE CAUSAR PARPADEO */
+#side-menu,
+#side-menu *,
+#side-menu.sidebar-container,
+#side-menu.sidebar-container * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* FORZAR ACELERACIÓN DE HARDWARE EN TODOS LOS ELEMENTOS */
+#side-menu,
+#side-menu *,
+#side-menu.sidebar-container,
+#side-menu.sidebar-container * {
+  -webkit-transform: translateZ(0) !important;
+  -moz-transform: translateZ(0) !important;
+  -ms-transform: translateZ(0) !important;
+  -o-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+}
+
+/* PROTECCIÓN ESPECÍFICA PARA ELEMENTOS AGREGADOS DESPUÉS DE LA CARGA */
+#side-menu > *:not(#sideBarTitle),
+#side-menu.sidebar-container > *:not(#sideBarTitle) {
+  /* ASEGURAR QUE ELEMENTOS DINÁMICOS NO PARPADEEN */
+  transition: none !important;
+  animation: none !important;
+  -webkit-transition: none !important;
+  -webkit-animation: none !important;
+  will-change: auto !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  contain: layout style !important;
+}
+
+/* PROTECCIÓN CONTRA FOCUS QUE PUEDE CAUSAR PARPADEO */
+#side-menu *:focus,
+#side-menu.sidebar-container *:focus {
+  outline: none !important;
+  transition: none !important;
+  animation: none !important;
+  -webkit-transition: none !important;
+  -webkit-animation: none !important;
+}
+
+/* ESTABILIZAR RENDERIZADO DE FUENTES */
+#side-menu,
+#side-menu *,
+#side-menu.sidebar-container,
+#side-menu.sidebar-container * {
+  font-display: block !important;
+  text-rendering: optimizeSpeed !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
